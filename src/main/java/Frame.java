@@ -66,6 +66,7 @@ public class Frame extends JFrame {
         conversione.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //In base al textfield selezionato svolge una conversione
                 if (textFieldSelezionato.equals(binario)){
 
                     int x = Integer.parseInt(binario.getText(), 2);
@@ -100,6 +101,7 @@ public class Frame extends JFrame {
         ArrayList<JButton> buttons = new ArrayList<>();
         for (int i = 0; i < 16; i++) {
             JButton button = new JButton("" + i);
+            //Se il bottono è > di 9, vuol dire che si usano le lettere ABCDEF
             switch (i){
                 case 10:
                     button.setText("A");
@@ -130,6 +132,7 @@ public class Frame extends JFrame {
             button.setFont(new Font("Calibri", Font.PLAIN, 38));
             buttons.add(button);
             panel.add(button);
+            //Rendo invisibili i bottoni ABCDEF
             if (i > 9){
                 button.setVisible(false);
             }
@@ -156,14 +159,16 @@ public class Frame extends JFrame {
         buttons.get(15).setBounds(buttons.get(0).getX(), buttons.get(10).getY() + 95, 75,75);
 
 
-
+        //Action listener textfield
+        //Rende visibile/invisibile i bottoni in base alla conversione
         binario.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                //Invisibili i numeri da 2 a ABCDEF
                 for (int i = 2; i < 16; i++) {
                     buttons.get(i).setVisible(false);
                 }
-
+                //Imposta textfield
                 textFieldSelezionato = binario;
             }
         });
@@ -171,10 +176,11 @@ public class Frame extends JFrame {
         decimale.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
+                //Rendo invisibili i numeri da 10 a ABCDEF
                 for (int i = 10; i < 16; i++){
                     buttons.get(i).setVisible(false);
                 }
+                //Rendo visibili i numeri da 0 a 9
                 for (int i = 0; i < 10; i++) {
                     buttons.get(i).setVisible(true);
                 }
@@ -185,11 +191,12 @@ public class Frame extends JFrame {
         ottale.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
+                //rendo visibili i numeri da 0 a 7
                 for (int i = 0; i < 8; i++) {
                     buttons.get(i).setVisible(true);
 
                 }
+                //Rendo invisibili i numeri da 8 a ABCDEF
                 for (int i = 8; i < 16; i++) {
                     buttons.get(i).setVisible(false);
                 }
@@ -200,6 +207,7 @@ public class Frame extends JFrame {
         esa.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                //Rendo visibili tutti i bottoni
                 for (int i = 0; i < 16; i++) {
                     buttons.get(i).setVisible(true);
                 }
@@ -208,8 +216,9 @@ public class Frame extends JFrame {
             }
         });
 
-
+        //Aggiungo pannello al Frame
         add(panel);
+        //Rendo il Frame visibile
         setVisible(true);
     }
 }
