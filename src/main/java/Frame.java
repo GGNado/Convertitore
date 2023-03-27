@@ -1,4 +1,3 @@
-import javax.naming.ldap.SortResponseControl;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -6,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.jar.JarEntry;
 
 public class Frame extends JFrame {
     JTextField textFieldSelezionato;
